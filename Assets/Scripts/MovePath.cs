@@ -17,7 +17,6 @@ public class MovePath : MonoBehaviour
     public Item item; // Ёкземпл€р класса Item в котором хран€тс€ данные с json файла
     public int movingTo = 0; // »ндекс точки к которой буду двигатьс€
 
-
     public Vector3 GetPoint(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
     {
         Vector3 p01 = Vector3.Lerp(p0, p1, t);
@@ -31,6 +30,7 @@ public class MovePath : MonoBehaviour
 
         return p0123;
     }
+
     // –исую путь с помошью гизмо, чтобы было проще он€ть по какой траектории будет двигатьс€ объект
     public void OnDrawGizmos()
     {
@@ -39,22 +39,19 @@ public class MovePath : MonoBehaviour
         {
             return;
         }
-        
+        int sigmentsCount = 20;
+        Vector3 firstPosition = item.pathPoints[0];
         // –исую путь между точками
-        for (var i = 1; i < item.pathPoints.Count; i++)
+        for (var i = 1; i < item.pathPoints.Count; i+=3)
         {
-            //int sigmentsCount = 20;
+            for (int l = 0; l < sigmentsCount; l++)
+            {
 
-            //for (int l = 0; l < sigmentsCount; l +=4)
-            //{
-            //    Vector3 firstPosition = item.pathPoints[i];
-            //    float t = (float)i / sigmentsCount;
-            //    Vector3 point = GetPoint(item.pathPoints[i], item.pathPoints[i + 1], item.pathPoints[i + 2], item.pathPoints[i + 3], t);
-            //    Gizmos.DrawLine(firstPosition, point);
-
-            //}
-
-            Gizmos.DrawLine(item.pathPoints[i-1], item.pathPoints[i]);
+                float t = (float)l / sigmentsCount;
+                Vector3 point = GetPoint(item.pathPoints[i-1], item.pathPoints[i], item.pathPoints[i + 1], item.pathPoints[i + 2], t);
+                Gizmos.DrawLine(firstPosition, point);
+                firstPosition = point;
+            }
         }
         // «ацикливаю путь если loop = 1
         if (item.loop == 1)

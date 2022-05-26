@@ -46,15 +46,15 @@ public class MoveObject : MonoBehaviour
 
     private IEnumerator DoMove(float time, Vector3 targetPosition)
     {
-        while (pointInPath.Current != null)
+       for(var i = 1; i < movePath.item.pathPoints.Count; i += 3)
         {
             Vector3 startPosition = transform.position;
             float startTime = Time.realtimeSinceStartup;
             float fraction = 0;
             while (fraction < 1f)
             {
-                fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time) * (movePath.item.pathPoints.Count - 1));
-                transform.position = Vector3.Lerp(startPosition, pointInPath.Current, fraction);
+                fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time)* movePath.item.pathPoints.Count / 4   );
+                transform.position = movePath.GetPoint(movePath.item.pathPoints[i-1], movePath.item.pathPoints[i], movePath.item.pathPoints[i + 1], movePath.item.pathPoints[i + 2], fraction);
                 yield return null;
             }
 
