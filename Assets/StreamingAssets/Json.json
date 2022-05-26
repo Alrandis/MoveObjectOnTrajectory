@@ -1,4 +1,4 @@
 {
-	"loop":0,
-	"posotion":[]
+	"loop":1,
+	"posotion":[[1,2,4],[2,3,4]]
 }
