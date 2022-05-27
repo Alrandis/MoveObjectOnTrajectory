@@ -44,7 +44,7 @@ public class MovePath : MonoBehaviour
         // Рисую путь между точками
         for (var i = 1; i < item.pathPoints.Count; i+=3)
         {
-            for (int l = 0; l < sigmentsCount; l++)
+            for (int l = 0; l <= sigmentsCount; l++)
             {
 
                 float t = (float)l / sigmentsCount;

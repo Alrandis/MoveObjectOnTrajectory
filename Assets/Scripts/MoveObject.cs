@@ -31,7 +31,7 @@ public class MoveObject : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter)) // Запуск движения нажатием либо Space либо Enter
+        if (Input.GetKeyDown(KeyCode.Space)) // Запуск движения нажатием либо Space либо Enter
         {
             if (pointInPath == null || pointInPath.Current == null) // Если путь пустой или текущая точка пустая прерываю выполнение
             {
@@ -53,9 +53,15 @@ public class MoveObject : MonoBehaviour
             float fraction = 0;
             while (fraction < 1f)
             {
-                fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time)* movePath.item.pathPoints.Count / 4   );
+                fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time)* (movePath.item.pathPoints.Count / 2.95f)   );
                 transform.position = movePath.GetPoint(movePath.item.pathPoints[i-1], movePath.item.pathPoints[i], movePath.item.pathPoints[i + 1], movePath.item.pathPoints[i + 2], fraction);
                 yield return null;
+            }
+
+            if(movePath.item.loop == 1 && i >= movePath.item.pathPoints.Count)
+            {
+                transform.position = Vector3.Lerp(movePath.item.pathPoints[i], movePath.item.pathPoints[0], fraction);
+                i = 0;
             }
 
             // Проверка достаточно ли близко объект подобрался к точке
