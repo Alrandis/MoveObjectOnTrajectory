@@ -9,6 +9,7 @@ public class MoveObject : MonoBehaviour
     public float distanceToPoint = 0.1f; // Растояние на которое должен приблизиться объект до точки, чтобы понять что он в точке
 
     private IEnumerator<Vector3> pointInPath; // Точка в пути
+    public int i;
 
     private void Start()
     {
@@ -46,22 +47,33 @@ public class MoveObject : MonoBehaviour
 
     private IEnumerator DoMove(float time, Vector3 targetPosition)
     {
-       for(var i = 1; i < movePath.item.pathPoints.Count; i += 3)
+       for( i = 1; i <= movePath.item.pathPoints.Count; i += 3)
         {
-            Vector3 startPosition = transform.position;
-            float startTime = Time.realtimeSinceStartup;
-            float fraction = 0;
-            while (fraction < 1f)
+            
+            if (movePath.item.loop == 1 && i >= movePath.item.pathPoints.Count)
             {
-                fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time)* (movePath.item.pathPoints.Count / 2.95f)   );
-                transform.position = movePath.GetPoint(movePath.item.pathPoints[i-1], movePath.item.pathPoints[i], movePath.item.pathPoints[i + 1], movePath.item.pathPoints[i + 2], fraction);
-                yield return null;
+                float startTime = Time.realtimeSinceStartup;
+                float fraction = 0;
+                while (fraction < 1f)
+                {
+                    fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time) * (movePath.item.pathPoints.Count));
+                    transform.position = Vector3.Lerp(movePath.item.pathPoints[i-1], movePath.item.pathPoints[1], fraction);
+                }
+                i = 0;
             }
 
-            if(movePath.item.loop == 1 && i >= movePath.item.pathPoints.Count)
+            if(i < movePath.item.pathPoints.Count)
             {
-                transform.position = Vector3.Lerp(movePath.item.pathPoints[i], movePath.item.pathPoints[0], fraction);
-                i = 0;
+                float startTime = Time.realtimeSinceStartup;
+                float fraction = 0;
+                Vector3 startPosition = transform.position;
+                
+                while (fraction < 1f)
+                {
+                    fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time) * (movePath.item.pathPoints.Count / 2.95f));
+                    transform.position = movePath.GetPoint(movePath.item.pathPoints[i - 1], movePath.item.pathPoints[i], movePath.item.pathPoints[i + 1], movePath.item.pathPoints[i + 2], fraction);
+                    yield return null;
+                }
             }
 
             // Проверка достаточно ли близко объект подобрался к точке
