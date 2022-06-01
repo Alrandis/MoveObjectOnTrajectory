@@ -145,6 +145,8 @@ public class bezie : MonoBehaviour
 				fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time) * (controlPoints.Count-2));
 				moveObject.transform.position = (1.0f - fraction) * (1.0f - fraction) * p0
 				+ 2.0f * (1.0f - fraction) * fraction * p1 + fraction * fraction * p2;
+				moveObject.transform.rotation = Quaternion.LookRotation(2f * (1.0f - fraction) * (p1 - p0) +
+					2f * fraction * (p2 - p1));
 				yield return null;
 			}
 			if(loop == 1)
@@ -163,6 +165,8 @@ public class bezie : MonoBehaviour
 						fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time) * (controlPoints.Count - 3));
 						moveObject.transform.position = (1.0f - fraction) * (1.0f - fraction) * p0
 						+ 2.0f * (1.0f - fraction) * fraction * p1 + fraction * fraction * p2;
+						moveObject.transform.rotation = Quaternion.LookRotation(2f * (1.0f - fraction) * (p1 - p0) +
+						2f * fraction * (p2 - p1));
 						yield return null;
 					}
 					j = 0;

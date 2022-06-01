@@ -10,6 +10,7 @@ public class NewBehaviourScript : MonoBehaviour
     public string url;
     public string fileName;
  
+    // Почему то сохраняет не мой файл на дроббркс, а его html страничку
   private void Awake()
     {
         url = "https://www.dropbox.com/s/n9kdtrllum8sibv/Json.json?dl=0";
