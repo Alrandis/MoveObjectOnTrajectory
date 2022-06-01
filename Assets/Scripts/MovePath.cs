@@ -106,10 +106,11 @@ public class MovePath : MonoBehaviour
         }
     }
 
+    [ContextMenu("Start")]
     // Беру данные из файла json
-    private void Start()
+    private void JJJJ()
     {
-        //item = JsonUtility.FromJson<Item>(File.ReadAllText(Application.streamingAssetsPath + "/Json.json"));
+        item = JsonUtility.FromJson<Item>(File.ReadAllText(Application.streamingAssetsPath + "/Json.json"));
     }
 
  
