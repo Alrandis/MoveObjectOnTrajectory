@@ -11,17 +11,17 @@ public class bezie : MonoBehaviour
 	public float width = 0.2f;
 	public int numberOfPoints = 20;
 	// —оздаю экземпл€р класса LineRenderer дл€ отображени€ линии
-	LineRenderer lineRenderer;
+	public LineRenderer lineRenderer;
 	public LoaderJson json; // Ёкземпл€р класса LoaderJson в котором хран€тс€ данные с json файла
 
 	void Start()
 	{
-		// —мещаю объект на стартовую позицию
-		moveObject.transform.position = json.item.pathPoints[0];
 		// Ќастраиваю LineRenderer 
 		lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.useWorldSpace = true;
 		lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Additive"));
+		// —мещаю объект на стартовую позицию
+		moveObject.transform.position = json.item.pathPoints[0];
 	}
 
 

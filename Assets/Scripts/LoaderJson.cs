@@ -13,7 +13,7 @@ public class LoaderJson : MonoBehaviour
     }
     public string nameFile; // »м€ файла который нужно использовать. ќЅя«ј“≈Ћ№Ќќ пред именем файда написать обратный слеш - \
     public Item item; // Ёкземпл€р класса Item в котором хран€тс€ данные с json файла
-    public void Start()
+    public void Awake()
     {
         // —читываю файл с папки StreamingAsset
         item = JsonUtility.FromJson<Item>(File.ReadAllText(Application.streamingAssetsPath + nameFile));
