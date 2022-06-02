@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuOnLevel : MonoBehaviour
 {
+    public LoaderJson json;
+    public Slider slider;
     private Camera mainCamera;
     [SerializeField] private Camera additionalCamera;
-  
     void Start()
     {
         mainCamera = GetComponent<Camera>();
         mainCamera = Camera.main;
         additionalCamera.enabled = false;
+        slider.value = json.item.time;  
     }
 
     public void ExitMenuPressed()
