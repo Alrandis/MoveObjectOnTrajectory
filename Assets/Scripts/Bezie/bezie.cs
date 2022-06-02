@@ -4,54 +4,7 @@ using UnityEngine;
 
 public class bezie : MonoBehaviour
 {
-	// Это кривая на 3 точках
-	//public GameObject start, middle, end;
-	//public Color color = Color.white;
-	//public float width = 0.2f;
-	//public int numberOfPoints = 20;
-	//LineRenderer lineRenderer;
-
-	//void Start()
-	//{
-	//	lineRenderer = GetComponent<LineRenderer>();
-	//	lineRenderer.useWorldSpace = true;
-	//	lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Additive"));
-	//}
-
-	//void Update()
-	//{
-	//	if (lineRenderer == null || start == null || middle == null || end == null)
-	//	{
-	//		return; // no points specified
-	//	}
-
-	//	// update line renderer
-	//	lineRenderer.startColor = color;
-	//	lineRenderer.endColor = color;
-	//	lineRenderer.startWidth = width;
-	//	lineRenderer.endWidth = width;
-
-	//	if (numberOfPoints > 0)
-	//	{
-	//		lineRenderer.positionCount = numberOfPoints;
-	//	}
-
-	//	// set points of quadratic Bezier curve
-	//	Vector3 p0 = start.transform.position;
-	//	Vector3 p1 = middle.transform.position;
-	//	Vector3 p2 = end.transform.position;
-	//	float t;
-	//	Vector3 position;
-	//	for (int i = 0; i < numberOfPoints; i++)
-	//	{
-	//		t = i / (numberOfPoints - 1.0f);
-	//		position = (1.0f - t) * (1.0f - t) * p0
-	//		+ 2.0f * (1.0f - t) * t * p1 + t * t * p2;
-	//		lineRenderer.SetPosition(i, position);
-	//	}
-	//}
-
-	public List<GameObject> controlPoints = new List<GameObject>();
+    public List<GameObject> controlPoints = new List<GameObject>();
 	public GameObject moveObject;
 	public Color color = Color.white;
 	public float width = 0.2f;
@@ -120,6 +73,25 @@ public class bezie : MonoBehaviour
 				position = (1.0f - t) * (1.0f - t) * p0
 				+ 2.0f * (1.0f - t) * t * p1 + t * t * p2;
 				lineRenderer.SetPosition(i + j * numberOfPoints, position);
+			}
+			if (loop == 1)
+			{
+				if (j == controlPoints.Count - 3)
+				{
+					p0 = 0.5f * (controlPoints[j + 1].transform.position
+					+ controlPoints[j + 2].transform.position);
+					p1 = controlPoints[0].transform.position;
+					p2 = controlPoints[1].transform.position;
+					
+
+					for (int i = 0; i < numberOfPoints; i++)
+					{
+						t = i * pointStep;
+						position = (1.0f - t) * (1.0f - t) * p0
+						+ 2.0f * (1.0f - t) * t * p1 + t * t * p2;
+						lineRenderer.SetPosition(i + j * numberOfPoints, position);
+					}
+				}
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.Space))
