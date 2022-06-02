@@ -85,7 +85,7 @@ public class bezie : MonoBehaviour
 				lineRenderer.SetPosition(i + j * numberOfPoints, position);
 			}
 			// Если путь зациклен, то связываю последнюю и началььную точку
-			if (json.item.loop == 1)
+			if (json.item.loop == true)
 			{
 				if (j == json.item.pathPoints.Count - 3)
 				{
@@ -140,7 +140,7 @@ public class bezie : MonoBehaviour
 				yield return null;
 			}
 			// Если движение зациклено, возвращаю объект с последней точки на начальную и начинаю движение заново
-			if(json.item.loop == 1)
+			if(json.item.loop == true)
             {
                 if (j == json.item.pathPoints.Count - 3)
                 {

@@ -17,7 +17,7 @@ public class MenuOnLevel : MonoBehaviour
 
     public void ExitMenuPressed()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 
     public void SwitchCamersPressed()

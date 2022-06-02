@@ -23,7 +23,7 @@ public class MovePath : MonoBehaviour
             Gizmos.DrawLine(json.item.pathPoints[i - 1], json.item.pathPoints[i]);
         }
         // Зацикливаю путь если loop = 1
-        if (json.item.loop == 1)
+        if (json.item.loop == true)
         {
             Gizmos.DrawLine(json.item.pathPoints[0], json.item.pathPoints[json.item.pathPoints.Count - 1]);
         }
@@ -50,7 +50,7 @@ public class MovePath : MonoBehaviour
             }
 
             // Если траектория не зациклена, то просто двигаюсь
-            if (json.item.loop == 0)
+            if (json.item.loop == false)
             {
                 if (movingTo < json.item.pathPoints.Count - 1)
                 {
@@ -61,7 +61,7 @@ public class MovePath : MonoBehaviour
 
 
             // Если траектория зациклена, связываю последнюю точку с начальной
-            if (json.item.loop == 1)
+            if (json.item.loop == true)
             {
                 movingTo++;
                 if (movingTo >= json.item.pathPoints.Count)

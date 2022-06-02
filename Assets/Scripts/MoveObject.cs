@@ -38,13 +38,13 @@ public class MoveObject : MonoBehaviour
             }
 
             // «апускаю корутину дл€ движени€ по ломанному пути
-            StartCoroutine(DoMove(movePath.json.item.time, pointInPath.Current));
+            StartCoroutine(DoMove(pointInPath.Current));
         }
 
 
     }
 
-    private IEnumerator DoMove(float time, Vector3 targetPosition)
+    private IEnumerator DoMove(Vector3 targetPosition)
     {
         // ѕока текуща€ точка существует(точка к торой стремитьс€ мой обьект)
         while (pointInPath.Current != null)
@@ -60,7 +60,7 @@ public class MoveObject : MonoBehaviour
                 // –асчитваю переменную так, чтобы мой объект прошел весь путь за установленный в json временной отрезок
                 // по сути от времени прошедшей с начала игры отнимаю врем€ старта движени€ на данном отрезке
                 // и делю это на врем€ прохождени€ траектории, после умножаю на колличество точек в пути
-                fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time) * (movePath.json.item.pathPoints.Count));
+                fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / movePath.json.item.time) * (movePath.json.item.pathPoints.Count));
                
                 // передвижение объекта
                 transform.position = Vector3.Lerp(startPosition, pointInPath.Current, fraction);

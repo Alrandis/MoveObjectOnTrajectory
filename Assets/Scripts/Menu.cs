@@ -12,12 +12,11 @@ public class Menu : MonoBehaviour
 
     public void StartLinePressed()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 
     public void ExitPressed()
     {
         Application.Quit();
-        Debug.Log("Exit pressed!");
     }
 }
