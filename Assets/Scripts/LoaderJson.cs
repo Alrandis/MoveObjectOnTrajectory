@@ -8,7 +8,7 @@ public class LoaderJson : MonoBehaviour
     public class Item
     {
         public int time;
-        public int loop;
+        public bool loop;
         public List<Vector3> pathPoints = new List<Vector3>();
     }
     public string nameFile; // »м€ файла который нужно использовать. ќЅя«ј“≈Ћ№Ќќ пред именем файда написать обратный слеш - \
@@ -20,4 +20,19 @@ public class LoaderJson : MonoBehaviour
 
     }
 
+    public void ToglleChance()
+    {
+        if(item.loop == true)
+        {
+            item.loop = false;
+        }
+        else
+        {
+            item.loop = true;
+        }
+    }
+    public void OnValueChanged(float value)
+    {
+        item.time = (int)value;
+    }
 }
