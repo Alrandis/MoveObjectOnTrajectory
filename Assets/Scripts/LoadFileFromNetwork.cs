@@ -4,7 +4,7 @@ using Environment = System.Environment;
 using Path = System.IO.Path;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class LoadFileFromNetwork : MonoBehaviour
 {
 
     //public string url;
