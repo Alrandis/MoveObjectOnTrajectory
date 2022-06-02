@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 public class MoveObject : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class MoveObject : MonoBehaviour
     private void Start()
     {
         // ѕроверка существует ли путь дл€ передвижени€
-        if(movePath == null) 
+        if (movePath == null)
         {
             return;
         }
@@ -31,29 +30,39 @@ public class MoveObject : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter)) // «апуск движени€ нажатием либо Space либо Enter
+        if (Input.GetKeyDown(KeyCode.Space)) // «апуск движени€ нажатием Space 
         {
             if (pointInPath == null || pointInPath.Current == null) // ≈сли путь пустой или текуща€ точка пуста€ прерываю выполнение
             {
                 return;
             }
 
-            StartCoroutine(DoMove(movePath.item.time, pointInPath.Current));
+            // «апускаю корутину дл€ движени€ по ломанному пути
+            StartCoroutine(DoMove(movePath.json.item.time, pointInPath.Current));
         }
 
-        
+
     }
 
     private IEnumerator DoMove(float time, Vector3 targetPosition)
     {
+        // ѕока текуща€ точка существует(точка к торой стремитьс€ мой обьект)
         while (pointInPath.Current != null)
         {
+            // начальна€ позици€ это позици€ обьекта на кажной итерации
             Vector3 startPosition = transform.position;
+            // врем€ отсчитываетс€ от начала запуска игры
             float startTime = Time.realtimeSinceStartup;
+            // вместо параметра t служит дл€ реализации Lerp
             float fraction = 0;
             while (fraction < 1f)
             {
-                fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time) * (movePath.item.pathPoints.Count - 1));
+                // –асчитваю переменную так, чтобы мой объект прошел весь путь за установленный в json временной отрезок
+                // по сути от времени прошедшей с начала игры отнимаю врем€ старта движени€ на данном отрезке
+                // и делю это на врем€ прохождени€ траектории, после умножаю на колличество точек в пути
+                fraction = Mathf.Clamp01(((Time.realtimeSinceStartup - startTime) / time) * (movePath.json.item.pathPoints.Count));
+               
+                // передвижение объекта
                 transform.position = Vector3.Lerp(startPosition, pointInPath.Current, fraction);
                 yield return null;
             }
