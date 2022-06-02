@@ -7,8 +7,8 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
 
-    public string url;
-    public string fileName;
+    //public string url;
+    //public string fileName;
  
    
   //private void Awake()
