@@ -927,6 +927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5138057928804436795}
   - component: {fileID: 7852315750379126519}
+  - component: {fileID: 8682909420304146270}
   m_Layer: 5
   m_Name: SpeedSlider
   m_TagString: Untagged
@@ -1007,6 +1008,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8682909420304146270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644234223346463059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee671520c10a4041b80d3c2effd8ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5068342104789527681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1675,6 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u0441 \u043A\u043E\u0442\u043E\u0440\u043E\u0439
-    \u043E\u0431\u044A\u0435\u043A\u0442 \u043F\u0440\u043E\u0439\u0434\u0435\u0442 
-    \u043C\u0430\u0440\u0448\u0440\u0443\u0442 \u0432 \u0441\u0435\u043A\u0443\u043D\u0434\u0430\u0445"
+  m_Text: "\u041A\u043E\u043B\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0435\u043A\u0443\u043D\u0434,
+    \u0437\u0430 \u043A\u043E\u0442\u043E\u0440\u043E\u0435 \u043E\u0431\u044A\u0435\u043A\u0442
+    \u043F\u0440\u043E\u0439\u0434\u0435\u0442 \u043C\u0430\u0440\u0448\u0440\u0443\u0442"

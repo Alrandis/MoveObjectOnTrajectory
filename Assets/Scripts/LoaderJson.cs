@@ -17,7 +17,6 @@ public class LoaderJson : MonoBehaviour
     {
         // —читываю файл с папки StreamingAsset
         item = JsonUtility.FromJson<Item>(File.ReadAllText(Application.streamingAssetsPath + nameFile));
-
     }
 
     public void ToglleChance()
