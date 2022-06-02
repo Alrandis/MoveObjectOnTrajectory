@@ -64,6 +64,11 @@ public class MoveObject : MonoBehaviour
                
                 // передвижение объекта
                 transform.position = Vector3.Lerp(startPosition, pointInPath.Current, fraction);
+                // Поворачиваю обект по напровлению движения
+                if(startPosition.y >= 4.32)
+                {
+                    transform.rotation = Quaternion.LookRotation(pointInPath.Current - startPosition);
+                }
                 yield return null;
             }
 
