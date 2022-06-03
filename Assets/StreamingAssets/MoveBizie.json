@@ -1,6 +1,6 @@
 {
 	"time": 20,
-	"loop": "true",
+	"loop": true,
 	"pathPoints": [
 		{
 			"x": 25.01,

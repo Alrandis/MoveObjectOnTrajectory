@@ -19,6 +19,7 @@ public class LoaderJson : MonoBehaviour
         item = JsonUtility.FromJson<Item>(File.ReadAllText(Application.streamingAssetsPath + nameFile));
     }
 
+    // При изменении нажатии Toglle во время игры можно управлять loop
     public void ToglleChance()
     {
         if(item.loop == true)
@@ -30,6 +31,8 @@ public class LoaderJson : MonoBehaviour
             item.loop = true;
         }
     }
+
+    // При изменении ползунка во время игры меняется значение time
     public void OnValueChanged(float value)
     {
         item.time = (int)value;

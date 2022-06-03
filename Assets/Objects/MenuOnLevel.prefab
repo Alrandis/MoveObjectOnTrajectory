@@ -396,6 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1329b05262a1b7f4da49977b4c6f20c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  json: {fileID: 0}
+  slider: {fileID: 0}
   additionalCamera: {fileID: 0}
 --- !u!1 &3628686492914640340
 GameObject:
@@ -927,7 +929,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5138057928804436795}
   - component: {fileID: 7852315750379126519}
-  - component: {fileID: 8682909420304146270}
   m_Layer: 5
   m_Name: SpeedSlider
   m_TagString: Untagged
@@ -1008,18 +1009,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8682909420304146270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4644234223346463059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cee671520c10a4041b80d3c2effd8ef4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5068342104789527681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,7 +1119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 18.2944, y: -16.7547}
+  m_AnchoredPosition: {x: 23.6, y: -13.7}
   m_SizeDelta: {x: 36.5887, y: 33.5094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3882265336292664703
@@ -1154,7 +1143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6603774, g: 0.6130296, b: 0.6130296, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1251,7 +1240,7 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 8107431835987049583}
   toggleTransition: 1
-  graphic: {fileID: 3846419247388545455}
+  graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
@@ -1496,7 +1485,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4970327266479401636}
   - component: {fileID: 725385067349431052}
-  - component: {fileID: 3846419247388545455}
   m_Layer: 5
   m_Name: Checkmark
   m_TagString: Untagged
@@ -1531,36 +1519,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8213581810676834558}
   m_CullTransparentMesh: 1
---- !u!114 &3846419247388545455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8213581810676834558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8531993075022016804
 GameObject:
   m_ObjectHideFlags: 0
